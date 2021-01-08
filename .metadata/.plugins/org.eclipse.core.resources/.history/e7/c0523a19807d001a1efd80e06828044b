@@ -1,0 +1,8 @@
+package ciao;
+
+public class hello {
+	 public static void main(String[] args) {
+		 float myNum = 5e3f;
+		 System.out.println(myNum);
+		  }
+}

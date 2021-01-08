@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Orario.java&apos; to &apos;orario/src&apos;&#x0D;&#x0A;- Original project: &apos;orario&apos;&#x0D;&#x0A;- Destination element: &apos;orario/src&apos;&#x0D;&#x0A;- Original element: &apos;orarioP.Orario.java&apos;" description="Copy compilation unit" destination="/src" element1="/src&lt;orarioP{Orario.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1605785342885" units="1" version="1.0"/>
+</session>
