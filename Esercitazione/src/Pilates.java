@@ -1,0 +1,90 @@
+/*Scrivere il codice della classe Corso di pilates; tale classe contiene il giorno e l'orario di svolgimento e l'elenco dei partecipanti. Tale elenco è vuoto alla creazione dell'oggetto (con costruttore parametrico) ma viene via via riempito man mano che gli sportivi si iscrivono. Il corso accetta al massimo 20 iscritti (memorizzare in una costante tale numero). Un iscritto può anche disiscriversi (metodo che accetta il cognome e lo rimuove dalla lista).
+In ogni momento devo poter sapere quanti iscritti ci sono.
+Inserire anche un metodo per la stampa di tutti i valori presenti nella classe.
+testare tutti i metodi su opportuni oggetti nel main*/
+import java.util.*;
+public class Pilates {
+private String giorno;
+private int orario;
+private ArrayList<String> elenco;
+public static final int massimo=20;
+	
+public Pilates(String giorno, int orario) {
+	this.giorno=giorno;
+	this.orario=orario;
+	this.elenco=new ArrayList<String>();
+}
+
+public boolean aggiungi(String nome) {
+	if(this.elenco.size()<=this.massimo) {
+		this.elenco.add(nome);
+		return true;
+	}
+	else return false;
+}
+
+public boolean rimuovi(String nome) {
+	int indice;
+	if(this.elenco.contains(nome)) {
+	  	indice=this.elenco.indexOf(nome);
+	  	this.elenco.remove(indice);
+		return true;
+	}else return false;
+}
+
+public int getIscritti() {
+	return this.elenco.size();
+}
+
+public String getGiorno() {
+	return this.giorno;
+}
+
+public int getOrario() {
+	return this.orario;
+}
+public ArrayList<String> getNomi() {
+	return this.elenco;
+}
+	public static void main(String[] args) {
+		int scelta;
+		String nome,cognome;
+		boolean controllo;
+        Pilates oggetto;
+        oggetto=new Pilates("Venerdì", 18);
+        Scanner input=new Scanner(System.in);
+        do {
+        	System.out.println("Inserire 1 per iscrivere una persona ");
+        	System.out.println("Inserire 2 per disiscrivere una persona");
+        	System.out.println("Inserire 3 per vedere quanti sono gli iscritti");
+        	System.out.println("Inserire 4 per stampare tutti i dati presenti");
+        	System.out.println("Inserire 5 per terminare il programma");
+        	scelta=input.nextInt();
+        	switch(scelta) {
+        	case  1:
+        		System.out.println("Inserire il nome");
+        		controllo=oggetto.aggiungi(input.next());
+        		if(controllo==false)
+        			System.out.println("Impossibile aggiungere la persona in quantoi l'elenco è pieno");
+        		break;
+        	case  2:
+        		System.out.println("Inserire il nome");
+        		controllo=oggetto.rimuovi(input.next());
+        		if(controllo==false)
+        			System.out.println("Persona non trovata");
+        		break;
+        	case  3:
+        		System.out.println("Il numero di iscritti è: "+oggetto.getIscritti());
+        		break;
+        	case  4:
+        		System.out.println("Informazioni presenti:");
+        		System.out.println("Giorno: "+oggetto.getGiorno());
+        		System.out.println("Orario: "+oggetto.getOrario());
+        		System.out.println("Numero iscritti: "+oggetto.getIscritti());
+        		System.out.println("Iscritti:\n"+oggetto.getNomi());
+        		break;
+        	}
+        }while(scelta!=5);
+	}
+
+}
