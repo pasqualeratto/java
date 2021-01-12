@@ -1,0 +1,96 @@
+/*Si vuole modellizzare una classe Java per la rappresentazione del funzionamento semplificato di
+una scheda telefonica SIM.
+Si devono quindi rappresentare i dati relativi alla carta SIM ed in particolare:
+- il numero di telefono
+- il credito disponibile in euro
+- la lista delle telefonate effettuate comprendente sia il numero verso cui la telefonata è stata
+
+effettuata sia la durata in minuti.
+La SIM può memorizzare fino a 1000 telefonate massimo; tale numero va inserito in una costante.
+La classe dovrà fornire le seguenti funzionalità:
+- un costruttore parametrico che crea una SIM con numero di telefono, un credito e la lista delle
+telefonate vuota;
+- un metodo per l'inserimento di una telefonata con i dati forniti dall'utente;
+- una funzione per il calcolo dei minuti totali di conversazione;
+- un metodo per eliminare tutte le telefonate effettuate verso un determinato numero passato in
+input come parametro;
+- una procedura per la stampa dei dati della SIM e l'elenco delle telefonate.
+Testare TUTTI i metodi e le funzioni incluse nella classe SIM su opportuni oggetti.
+Consegnare le due classi SIM e MAIN in un unico file indicante il vostro cognome.*/
+import java.util.*;
+public class Sim {
+private int numero;
+private float credito;
+private ArrayList<Integer> lista;
+private static final int massimo=1000;
+
+public Sim(int numero,int credito) {
+	this.numero=numero;
+	this.credito=credito;
+	this.lista=new ArrayList<Integer>();
+}
+
+public boolean inserimento(int numero, int durata) {
+	if(this.lista.size()<massimo) {	
+	this.lista.add(numero);
+    this.lista.add(durata);
+	return true;
+	}
+	else 
+		return false;
+}
+
+public float minutiTotali() {
+	float totale=0;
+	for(int i=1;i<this.lista.size();i+=2)
+			totale+=this.lista.get(i);
+	return totale;
+}
+
+public void rimuovi(int numero) {
+	System.out.println("Entrato");
+	for(int i=0;i<this.lista.size()-1;i++)
+	if(this.lista.get(i)==numero) {
+		this.lista.remove(i);
+		this.lista.remove(i+1);
+		break;
+	}
+}
+
+public int getNumero() {return this.numero;}
+public float getCredito() {return this.credito;}
+
+public static void main(String[] args) {
+    Sim oggetto;
+    oggetto=new Sim(1234,50);
+    int scelta,numero,durata;
+    float totale;
+    Scanner input=new Scanner(System.in);
+    do {
+    	System.out.println("Inserire 1 per aggiungere una telefonata,2 per conoscere i minuti totali di conversazione,3 per eliminare le telefonate verso un numero,4 per stampare le informazioni,5 per terminare");
+    	scelta=input.nextInt();
+    	switch(scelta) {
+    	case 1:
+    		System.out.println("Inserire numero e minuti di conversazione");
+    		numero=input.nextInt();
+    		durata=input.nextInt();
+    		oggetto.inserimento(numero,durata);
+    		break;
+    	case 2:
+    		totale=oggetto.minutiTotali();
+    		System.out.println("Minuti totali: "+totale);
+    		break;
+    	case 3:
+    		System.out.println("Inserire il numero");
+    		numero=input.nextInt();
+    		oggetto.rimuovi(numero);
+    		break;
+    	case 4:
+    		System.out.println(oggetto.toString());
+    		break;
+    	}
+    }while(scelta!=5);
+     
+	}
+
+}

@@ -1,0 +1,46 @@
+/*Si vuole modellizzare una classe Java per la rappresentazione del funzionamento semplificato di
+una scheda telefonica SIM.
+Si devono quindi rappresentare i dati relativi alla carta SIM ed in particolare:
+- il numero di telefono
+- il credito disponibile in euro
+- la lista delle telefonate effettuate comprendente sia il numero verso cui la telefonata è stata
+
+effettuata sia la durata in minuti.
+La SIM può memorizzare fino a 1000 telefonate massimo; tale numero va inserito in una costante.
+La classe dovrà fornire le seguenti funzionalità:
+- un costruttore parametrico che crea una SIM con numero di telefono, un credito e la lista delle
+telefonate vuota;
+- un metodo per l'inserimento di una telefonata con i dati forniti dall'utente;
+- una funzione per il calcolo dei minuti totali di conversazione;
+- un metodo per eliminare tutte le telefonate effettuate verso un determinato numero passato in
+input come parametro;
+- una procedura per la stampa dei dati della SIM e l'elenco delle telefonate.
+Testare TUTTI i metodi e le funzioni incluse nella classe SIM su opportuni oggetti.
+Consegnare le due classi SIM e MAIN in un unico file indicante il vostro cognome.*/
+import java.util.*;
+public class Sim {
+private int numero;
+private float credito;
+private ArrayList<int> lista;
+private static final int massimo=1000;
+
+public Sim(int numero,int credito) {
+	this.numero=numero;
+	this.credito=credito;
+	this.lista=new ArrayList<int>();
+}
+
+public boolean inserimento(int numero, int durata) {
+		this.lista.add(numero);
+	
+	return true;
+}
+
+public static void main(String[] args) {
+    Sim oggetto;
+    oggetto=new Sim(1234,50);
+    
+     
+	}
+
+}
