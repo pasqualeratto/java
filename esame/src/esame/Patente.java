@@ -40,9 +40,10 @@ public class Patente extends JFrame  {
 	/**
 	 * Create the frame.
 	 */
-	public Patente() {
+	public Patente() throws IOException{
+		Scanner leggi=new Scanner(f);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1233, 640);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -61,11 +62,10 @@ public class Patente extends JFrame  {
 		contentPane.add(f);
 		
 		domanda = new JTextField();
-		domanda.setBounds(10, 36, 414, 20);
+		domanda.setBounds(21, 37, 1096, 105);
 		contentPane.add(domanda);
 		domanda.setColumns(10);
-		
-		domanda.setText(getName());
+		domanda.setText(leggi.nextLine());
 		
 	}
 }
